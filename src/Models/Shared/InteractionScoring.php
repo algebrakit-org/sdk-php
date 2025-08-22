@@ -8,6 +8,6 @@ class InteractionScoring
         public bool $finished,
         public float $marksTotal,
         public float $marksEarned,
-        public ?array $penalties = null
+        public ?Penalties $penalties = null
     ) {}
 }

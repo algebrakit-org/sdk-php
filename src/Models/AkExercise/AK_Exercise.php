@@ -13,7 +13,7 @@ class AK_Exercise implements JsonSerializable
     public function __construct(
         public string $studentProfile = '',
         public array $elements = [],
-        public array $symbols = [],
+        public ?array $symbols = null,
         public AK_QuestionMode $questionMode = AK_QuestionMode::ONE_BY_ONE,
         public int $version = 1,
         public ?string $script = null,
@@ -26,16 +26,18 @@ class AK_Exercise implements JsonSerializable
             'type' => $this->type,
             'version' => $this->version,
             'studentProfile' => $this->studentProfile,
-            'symbols' => array_map(
-                fn($s) => $s instanceof JsonSerializable ? $s->jsonSerialize() : $s,
-                $this->symbols
-            ),
             'elements' => array_map(
                 fn($e) => $e instanceof JsonSerializable ? $e->jsonSerialize() : $e,
                 $this->elements
             ),
             'questionMode' => $this->questionMode->value,
         ];
+        if ($this->symbols !== null) {
+            $data['symbols'] = array_map(
+                fn($s) => $s instanceof JsonSerializable ? $s->jsonSerialize() : $s,
+                $this->symbols
+            );
+        }
         if ($this->script !== null) $data['script'] = $this->script;
         return $data;
     }

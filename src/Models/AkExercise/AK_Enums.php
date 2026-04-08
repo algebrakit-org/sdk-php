@@ -74,3 +74,39 @@ enum AK_AccuracyType: string
     case ACCURATE = 'ACCURATE';
     case PRECISION = 'PRECISION';
 }
+
+enum AK_NumberForm: string
+{
+    case DECIMAL_REQUIRED = 'DECIMAL_REQUIRED';
+    case DECIMAL_PREFERRED = 'DECIMAL_PREFERRED';
+    case FRACTION_REQUIRED = 'FRACTION_REQUIRED';
+    case FRACTION_PREFERRED = 'FRACTION_PREFERRED';
+    case SCIENTIFIC_NOTATION_REQUIRED = 'SCIENTIFIC_NOTATION_REQUIRED';
+    case SCIENTIFIC_NOTATION_PREFERRED = 'SCIENTIFIC_NOTATION_PREFERRED';
+}
+
+enum AK_RadicalForm: string
+{
+    case STANDARD_FORM_REQUIRED = 'STANDARD_FORM_REQUIRED';
+}
+
+enum AK_FractionForm: string
+{
+    case MIXED_FRACTION_REQUIRED = 'MIXED_FRACTION_REQUIRED';
+    case IMPROPER_FRACTION_REQUIRED = 'IMPROPER_FRACTION_REQUIRED';
+}
+
+enum AK_InitialExpressionType: string
+{
+    case NONE = 'NONE';
+    case CUSTOM = 'CUSTOM';
+    case AUTOMATIC = 'AUTOMATIC';
+}
+
+enum AK_StudentFeedbackType: string
+{
+    case ALL = 'ALL';
+    case ICONS_ONLY = 'ICONS_ONLY';
+    case ERRORS_ONLY = 'ERRORS_ONLY';
+    case NONE = 'NONE';
+}

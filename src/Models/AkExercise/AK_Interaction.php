@@ -85,6 +85,8 @@ class AK_InteractionMultistep extends AK_Interaction
         public AK_MultistepPart $solutionPart,
         public ?array $givenParts = null,
         public ?array $intermediateParts = null,
+        public ?AK_InitialExpressionType $initialExpressionType = null,
+        public ?string $initialExpression = null,
         ?string $refId = null,
         ?string $instruction = null,
         ?bool $scored = null,
@@ -103,6 +105,8 @@ class AK_InteractionMultistep extends AK_Interaction
         ]);
         if ($this->givenParts !== null) $data['givenParts'] = $this->givenParts;
         if ($this->intermediateParts !== null) $data['intermediateParts'] = $this->intermediateParts;
+        if ($this->initialExpressionType !== null) $data['initialExpressionType'] = $this->initialExpressionType->value;
+        if ($this->initialExpression !== null) $data['initialExpression'] = $this->initialExpression;
         return $data;
     }
 }

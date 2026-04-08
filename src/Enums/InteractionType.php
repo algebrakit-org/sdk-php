@@ -12,4 +12,7 @@ enum InteractionType: string
     case NUMBER_LINE = 'NUMBER_LINE';
     case ARITHMETIC = 'ARITHMETIC';
     case CHOICE = 'CHOICE';
+    case OPEN_ANSWER = 'OPEN_ANSWER';
+    case MODEL_METHOD = 'MODEL_METHOD';
+    case MODEL_METHOD_FREEFORM = 'MODEL_METHOD_FREEFORM';
 }

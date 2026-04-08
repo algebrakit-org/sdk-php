@@ -9,6 +9,17 @@ use Algebrakit\SDK\Models\Requests\SessionInfoRequest;
 use Algebrakit\SDK\Models\Requests\ExerciseInfoRequest;
 use Algebrakit\SDK\Models\Requests\ExerciseValidateRequest;
 use Algebrakit\SDK\Models\Shared\ExerciseById;
+use Algebrakit\SDK\Models\Shared\ExerciseBySpec;
+use Algebrakit\SDK\Models\AkExercise\AK_Exercise;
+use Algebrakit\SDK\Models\AkExercise\AK_Symbol;
+use Algebrakit\SDK\Models\AkExercise\AK_SymbolType;
+use Algebrakit\SDK\Models\AkExercise\AK_QuestionMode;
+use Algebrakit\SDK\Models\AkExercise\AK_Element;
+use Algebrakit\SDK\Models\AkExercise\AK_ContentBlock;
+use Algebrakit\SDK\Models\AkExercise\AK_InteractionBlock;
+use Algebrakit\SDK\Models\AkExercise\AK_InteractionMultistep;
+use Algebrakit\SDK\Models\AkExercise\AK_MultistepPart;
+use Algebrakit\SDK\Models\AkExercise\AK_TaskSimplify;
 
 // Define the exercise ID as a constant
 const EXERCISE_ID = 'fa42e943-8213-41a6-8a91-8c22a929ffe9';
@@ -81,6 +92,42 @@ try {
     } else {
         echo "No sessions were created.\n";
     }
+    // Create a session using an AK_Exercise specification
+    echo "\nCreating session from AK_Exercise spec...\n";
+    $exerciseSpec = new AK_Exercise(
+        studentProfile: 'uk_KS5',
+        questionMode: AK_QuestionMode::ALL_AT_ONCE,
+        symbols: [
+            new AK_Symbol(name: 'x', type: AK_SymbolType::VARIABLE),
+        ],
+        elements: [
+            new AK_Element(blocks: [
+                new AK_ContentBlock(content: 'Simplify the following expression.'),
+                new AK_InteractionBlock(
+                    interaction: new AK_InteractionMultistep(
+                        solutionPart: new AK_MultistepPart(
+                            task: new AK_TaskSimplify(expression: '2x + 3x')
+                        )
+                    )
+                ),
+            ]),
+        ]
+    );
+
+    // Validate the exercise spec
+    $specValidateResponse = $sessionService->validateExercise(
+        new ExerciseValidateRequest(exerciseSpec: $exerciseSpec)
+    );
+    echo "Spec validation: Valid=" . ($specValidateResponse->valid ? 'true' : 'false') . ", Marks={$specValidateResponse->marks}\n";
+
+    // Create session from spec
+    $specSessionResponse = $sessionService->createSession(
+        new CreateSessionRequest(exercises: [new ExerciseBySpec(exerciseSpec: $exerciseSpec)])
+    );
+    if (!empty($specSessionResponse) && $specSessionResponse[0]->success && !empty($specSessionResponse[0]->sessions)) {
+        echo "Session from spec created. Session ID: {$specSessionResponse[0]->sessions[0]->sessionId}\n";
+    }
+
 } catch (Exception $e) {
     echo "An error occurred: " . $e->getMessage() . "\n";
 }

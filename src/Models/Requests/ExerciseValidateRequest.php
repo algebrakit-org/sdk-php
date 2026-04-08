@@ -2,6 +2,7 @@
 
 namespace Algebrakit\SDK\Models\Requests;
 
+use Algebrakit\SDK\Models\AkExercise\AK_Exercise;
 use JsonSerializable;
 
 class ExerciseValidateRequest implements JsonSerializable
@@ -9,7 +10,7 @@ class ExerciseValidateRequest implements JsonSerializable
     public function __construct(
         public ?string $exerciseId = null,
         public string|int|null $version = null,
-        public ?object $exerciseSpec = null
+        public ?AK_Exercise $exerciseSpec = null
     ) {}
 
     public function jsonSerialize(): array

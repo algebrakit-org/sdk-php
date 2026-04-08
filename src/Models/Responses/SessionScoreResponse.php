@@ -37,7 +37,7 @@ class SessionScoreResponse
                 finished: $data['scoring']['finished'],
                 marksTotal: $data['scoring']['marksTotal'],
                 marksEarned: $data['scoring']['marksEarned'],
-                penalties: $data['scoring']['penalties'] ?? null
+                penalties: isset($data['scoring']['penalties']) ? \Algebrakit\SDK\Models\Shared\Penalties::fromArray($data['scoring']['penalties']) : null
             );
         }
 

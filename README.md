@@ -75,22 +75,49 @@ $validateResponse = $sessionService->validateExercise($validateRequest);
 echo "Exercise valid: " . ($validateResponse->valid ? 'Yes' : 'No') . "\n";
 ```
 
-## Running the Demo
+## Running the Demos
+
+### CLI Demo
+
+Demonstrates SDK API calls with text output.
 
 1. Install dependencies:
    ```bash
    composer install
    ```
 
-2. Update the API key in `demo/demo.php`:
+2. Update the API key in `demo/various-functions.php`:
    ```php
    $apiKey = 'your-actual-api-key';
    ```
 
 3. Run the demo:
    ```bash
-   php demo/demo.php
+   php demo/various-functions.php
    ```
+
+### Web Demo
+
+Renders a working AlgebraKit exercise in the browser.
+
+1. Install dependencies:
+   ```bash
+   composer install
+   ```
+
+2. Update the configuration in `demo/play-exercise.php`:
+   ```php
+   $apiKey     = 'your-actual-api-key';
+   $apiUrl     = 'https://api.algebrakit.com';
+   $widgetUrl  = 'https://widgets.algebrakit.com';
+   ```
+
+3. Start a local PHP server:
+   ```bash
+   php -S localhost:8000
+   ```
+
+4. Open `http://localhost:8000/demo/play-exercise.php` in your browser.
 
 ## API Reference
 

@@ -1,17 +1,17 @@
 <?php
 /*
-    AlgebraKit PHP SDK - Web Demo
+    Algebrakit PHP SDK - Web Demo
     =============================
-    This demo shows how to create an AlgebraKit exercise session using the PHP SDK
+    This demo shows how to create an Algebrakit exercise session using the PHP SDK
     and render it as an interactive exercise in the browser.
 
     Prerequisites:
     - PHP 8.0 or higher
     - Dependencies installed via `composer install`
-    - A valid AlgebraKit API key (set in the configuration below)
+    - A valid Algebrakit API key (set in the configuration below)
 
     To run:
-    1. Update $apiKey below with your AlgebraKit API key
+    1. Update $apiKey below with your Algebrakit API key
     2. Start the built-in PHP server with this file as router script:
        php -S localhost:8000 demo/play-exercise.php
     3. Open http://localhost:8000 in your browser
@@ -28,12 +28,12 @@ use Algebrakit\SDK\Models\Shared\ExerciseById;
 // ============================================================
 
 $apiKey     = 'your-api-key'; // Replace with your actual API key
-$apiUrl     = 'https://api.algebrakit.com';          // AlgebraKit API endpoint
-$widgetUrl  = 'https://widgets.algebrakit.com';      // AlgebraKit widget script URL
+$apiUrl     = 'https://api.algebrakit.com';          // Algebrakit API endpoint
+$widgetUrl  = 'https://widgets.algebrakit.com';      // Algebrakit widget script URL
 $exerciseId = 'fa42e943-8213-41a6-8a91-8c22a929ffe9'; // Exercise ID to create a session for
 
 // ============================================================
-// Proxy: forwards widget requests to the AlgebraKit API
+// Proxy: forwards widget requests to the Algebrakit API
 // ============================================================
 
 $proxyPrefix = '/proxy/algebrakit';
@@ -100,7 +100,7 @@ try {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AlgebraKit PHP SDK - Web Demo</title>
+    <title>Algebrakit PHP SDK - Web Demo</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -185,7 +185,7 @@ try {
 </head>
 <body>
 
-    <!-- AlgebraKit configuration (must be set BEFORE loading the widget script) -->
+    <!-- Algebrakit configuration (must be set BEFORE loading the widget script) -->
     <script>
         AlgebraKIT = {
             config: {
@@ -196,10 +196,10 @@ try {
         };
     </script>
 
-    <!-- Load AlgebraKit widget script -->
+    <!-- Load Algebrakit widget script -->
     <script src="<?= htmlspecialchars($widgetUrl) ?>"></script>
 
-    <h1>AlgebraKit PHP SDK - Web Demo</h1>
+    <h1>Algebrakit PHP SDK - Web Demo</h1>
 
     <?php if ($error): ?>
         <div class="error"><?= htmlspecialchars($error) ?></div>

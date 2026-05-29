@@ -4,10 +4,10 @@ A PHP SDK for interacting with the Algebrakit Web Service API.
 
 ## Installation
 
-Install the SDK using Composer:
+Install the SDK into your project with Composer:
 
 ```bash
-composer install
+composer require algebrakit/sdk-php
 ```
 
 ## Requirements
@@ -98,7 +98,7 @@ Demonstrates SDK API calls with text output.
 
 ### Web Demo
 
-Renders a working AlgebraKit exercise in the browser.
+Renders a working Algebrakit exercise in the browser.
 
 1. Install dependencies:
    ```bash

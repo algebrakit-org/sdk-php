@@ -1,8 +1,20 @@
 {
     "name": "algebrakit/sdk-php",
-    "description": "PHP SDK for Algebrakit Web Service API",
+    "description": "Official PHP SDK for the Algebrakit Web Service API — create exercise sessions, retrieve scores, lock/unlock sessions, validate exercises, and fetch session info.",
     "type": "library",
+    "keywords": ["algebrakit", "sdk", "math", "education", "exercises", "api-client"],
+    "homepage": "https://github.com/algebrakit-org/sdk-php",
     "license": "MIT",
+    "authors": [
+        {
+            "name": "Algebrakit",
+            "homepage": "https://www.algebrakit.com"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/algebrakit-org/sdk-php/issues",
+        "source": "https://github.com/algebrakit-org/sdk-php"
+    },
     "require": {
         "php": "^8.0",
         "guzzlehttp/guzzle": "^7.0"
